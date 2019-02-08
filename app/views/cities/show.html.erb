@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>City Gossips</title>
+    </head>
+
+    <body> 
+
+    <div class="container" style= "text-center">
+
+      <h2> What's new in <%= @city.name%> ?</h2>
+      <p> All gossips from there : </p> 
+
+      <% @users.each do |user| %>    
+
+          <% @gossips_subarray = @gossips.where("user_id = ?", user.id) %>
+
+            <br />
+
+          <% @gossips_subarray.each do |gossip| %>
+              
+                    <div class="card" style = "margin-bottom:25px" >
+                <div class="card-header" >
+                  <%= gossip.user.first_name %> <%= gossip.user.last_name %>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"><%= gossip.title %></h5>
+                  <p class="card-text"><%= gossip.content %></p>
+                  <a class="btn btn-primary" <%= link_to "Go to gossip page", gossip_path(gossip) %> </a>
+                </div>
+              </div>
+
+                <%end%>
+
+        <%end%>
+
+    </div>
+
+</body>
+</html>

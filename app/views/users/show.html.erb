@@ -1,0 +1,35 @@
+<html>
+  
+  <head>
+      <title>Author</title>
+  </head>
+
+  <body> 
+
+  <div class="container" style= "text-center">
+  	<h2> Welcome on <%= @user.first_name%> <%= @user.last_name%> page!</h2> 
+    
+  </div>
+
+
+
+    <div class="container">
+
+        <div class="card" style = "margin-top:30px" >
+          <div class="card-header" > <%= @user.first_name %> <%= @user.last_name %></div>
+            <div class="card-body">
+                <h5 class="card-title"> Description : <%= @user.description %></h5>
+                <p class="card-text">Age : <%= @user.age %></p>
+                <p class="card-text">Email : <%= @user.email %></p>
+                <p class="card-text">City : <%= @user.city.name %></p>
+                <a class="btn btn-primary" <%= link_to "Read all the gossips from this city", city_path(@user.city) %> </a>
+            </div>
+      </div>
+    </div>
+
+  
+
+</div>
+
+</body>
+</html>

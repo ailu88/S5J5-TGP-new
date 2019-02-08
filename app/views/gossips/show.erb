@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Gossip Page</title>
+  </head>
+
+
+  <body> 
+<<<<<<< HEAD
+=======
+  	<p> Welcome sur la page du gossip N° <%=params[:id]%> !</p> 
+  	<p>Voici les infos sur ce potin :</p>
+>>>>>>> test-branch
+
+  <div class="container" style= "text-center">
+
+      <h2> Welcome on the page of Gossip number <%=params[:id]%>!</h2> 
+
+      <p>You will love to learn:</p>
+
+
+      <div class="card" style = "margin-top:30px" >
+          <div class="card-header" > <%= @gossip.created_at%> </div>
+            <div class="card-body">
+                <h4 class="card-text">Title : <%= @gossip.title %></h4>    
+                <h5 class="card-title"> Did you know that.... : <br> <br>
+                <%= @gossip.content %> <br> </h5>
+                <p class="card-text">Author : <%= @gossip.user.first_name %> <%= @gossip.user.last_name %>  <%= link_to "Read more...", user_path(@gossip.user.id) %> </p>
+                <p class="card-text">City : <%= @gossip.user.city.name %> <%= link_to "See gossips from there", city_path(@gossip.user.city) %> </p>
+                </div>
+      </div>
+
+
+      
+
+      <% if current_user %>      
+
+        <a class="btn btn-primary" style = "margin-top:30px" <%= link_to "Edit this gossip", edit_gossip_path %> </a>
+
+        <a class="btn btn-primary" style = "margin-top:30px" <%= link_to "Delete this gossip", gossip_path(@gossip), method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+
+      <% else %>
+
+      <% end %>
+
+      </div>
+
+      <div class="container" style= "text-center margin-top: 20">
+
+        <h5>Likes (<%= @gossip.comments.size %>)</h5>
+
+        <%= render partial: 'gossips/comment', collection: @gossip.comments.reverse %>
+
+      </div>
+
+
+  </body>
+
+</html>
